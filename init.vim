@@ -25,15 +25,21 @@ call plug#begin('~/.config/nvim/plugged')
 :Plug 'vim-airline/vim-airline'
 :Plug 'vim-airline/vim-airline-themes'
 :Plug 'nvim-lua/completion-nvim'
+:Plug 'hrsh7th/nvim-compe'
 :Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 :Plug 'nvim-treesitter/playground'
 :Plug 'nvim-lua/popup.nvim'
 :Plug 'nvim-lua/plenary.nvim'
 :Plug 'nvim-telescope/telescope.nvim'
-:Plug 'nvim-telescope/telescope-fzy-native.nvim'
+:Plug 'nvim-telescope/telescope-fzy-native.nvim', { 'do': 'make' }
 :Plug 'octol/vim-cpp-enhanced-highlight'
+:Plug 'sbdchd/neoformat'
 :Plug 'tpope/vim-fugitive'
 :Plug 'mhinz/vim-signify'
+:Plug 'folke/which-key.nvim'
+:Plug 'folke/todo-comments.nvim'
+:Plug 'ray-x/lsp_signature.nvim'
+:Plug 'lewis6991/gitsigns.nvim'
 
 " Colour schemes
 :Plug 'sainnhe/gruvbox-material'
@@ -64,8 +70,19 @@ inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
-" Lets stay on the home row as much as possible
-inoremap jj <Esc>
+" Copy to end of line
+nnoremap Y y$
+
+" Keep search result centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+" Additional undo breakpoints
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
 
 let mapleader = " "
 " Simpler split window navigation
@@ -102,4 +119,9 @@ lua require'lspconfig'.pyright.setup{ on_attach=require'completion'.on_attach }
 lua require'lspconfig'.bashls.setup{ on_attach=require'completion'.on_attach }
 lua require'lspconfig'.cmake.setup{ on_attach=require'completion'.on_attach }
 lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach , cmd = {"/usr/bin/clangd"}}
+lua require'compe'.setup {enabled = true, config = "require('plugin.completion')"}
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+lua require'todo-comments'.setup{}
+lua require'lsp_signature'.setup{}
+lua require'gitsigns'.setup{}
+lua require'which-key'.setup{}
