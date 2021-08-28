@@ -25,7 +25,8 @@ call plug#begin('~/.config/nvim/plugged')
 :Plug 'vim-airline/vim-airline'
 :Plug 'vim-airline/vim-airline-themes'
 :Plug 'nvim-lua/completion-nvim'
-:Plug 'hrsh7th/nvim-compe'
+:Plug 'hrsh7th/nvim-cmp'
+:Plug 'hrsh7th/cmp-buffer'
 :Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 :Plug 'nvim-treesitter/playground'
 :Plug 'nvim-lua/popup.nvim'
@@ -40,9 +41,9 @@ call plug#begin('~/.config/nvim/plugged')
 :Plug 'folke/todo-comments.nvim'
 :Plug 'ray-x/lsp_signature.nvim'
 :Plug 'lewis6991/gitsigns.nvim'
-
+:Plug 'henriquehbr/nvim-startup.lua'
 " Colour schemes
-:Plug 'sainnhe/gruvbox-material'
+" :Plug 'sainnhe/gruvbox-material'
 :Plug 'mhartington/oceanic-next'
 
 call plug#end()
@@ -85,11 +86,13 @@ inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 
 let mapleader = " "
+
 " Simpler split window navigation
 nmap <leader>h :wincmd h<cr>
 nmap <leader>j :wincmd j<cr>
 nmap <leader>k :wincmd k<cr>
 nmap <leader>l :wincmd l<cr>
+
 " Telescope shortcuts
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -119,9 +122,10 @@ lua require'lspconfig'.pyright.setup{ on_attach=require'completion'.on_attach }
 lua require'lspconfig'.bashls.setup{ on_attach=require'completion'.on_attach }
 lua require'lspconfig'.cmake.setup{ on_attach=require'completion'.on_attach }
 lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach , cmd = {"/usr/bin/clangd"}}
-lua require'compe'.setup {enabled = true, config = "require('plugin.completion')"}
+lua require'cmp'.setup {enabled = true, config = "require('plugin.completion')"}
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 lua require'todo-comments'.setup{}
 lua require'lsp_signature'.setup{}
 lua require'gitsigns'.setup{}
 lua require'which-key'.setup{}
+lua require'nvim-startup'.setup{}
