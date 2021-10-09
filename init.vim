@@ -21,9 +21,8 @@ set colorcolumn=120
 " call plug#begin('~/.local/share/nvim/site/plugged')
 call plug#begin('~/.config/nvim/plugged')
 
+:Plug 'hoob3rt/lualine.nvim'
 :Plug 'neovim/nvim-lsp'
-:Plug 'vim-airline/vim-airline'
-:Plug 'vim-airline/vim-airline-themes'
 :Plug 'nvim-lua/completion-nvim'
 :Plug 'hrsh7th/nvim-cmp'
 :Plug 'hrsh7th/cmp-buffer'
@@ -42,6 +41,9 @@ call plug#begin('~/.config/nvim/plugged')
 :Plug 'ray-x/lsp_signature.nvim'
 :Plug 'lewis6991/gitsigns.nvim'
 :Plug 'henriquehbr/nvim-startup.lua'
+:Plug 'abecodes/tabout.nvim'
+:Plug 'kyazdani42/nvim-web-devicons'
+
 " Colour schemes
 " :Plug 'sainnhe/gruvbox-material'
 :Plug 'mhartington/oceanic-next'
@@ -49,16 +51,10 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 colorscheme OceanicNext
-" set background=dark
-let g:airline_theme='oceanicnext'
 let g:oceanic_next_terninal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
 
 " I still drift over to the arrow keys. Turn them off
 noremap <Up> <Nop>
@@ -129,3 +125,7 @@ lua require'lsp_signature'.setup{}
 lua require'gitsigns'.setup{}
 lua require'which-key'.setup{}
 lua require'nvim-startup'.setup{}
+lua require'nvim-web-devicons'.setup{}
+lua require'lualine'.setup{options = {theme = 'oceanicnext'}}
+" Tabout doesn't seem to work, probably an issue with this config
+lua require'tabout'.setup{tabkey = '<Tab>', backwards_tabkey = '<S-Tab>'}
