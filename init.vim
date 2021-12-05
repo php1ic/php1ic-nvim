@@ -10,7 +10,7 @@ set nohlsearch
 set incsearch
 set scrolloff=8
 set termguicolors
-set completeopt=menuone,noinsert,noselect
+set completeopt=menuone,noselect,menu
 
 set updatetime=300
 set timeoutlen=500
@@ -21,11 +21,16 @@ set colorcolumn=120
 " call plug#begin('~/.local/share/nvim/site/plugged')
 call plug#begin('~/.config/nvim/plugged')
 
-:Plug 'hoob3rt/lualine.nvim'
 :Plug 'neovim/nvim-lsp'
-:Plug 'nvim-lua/completion-nvim'
+:Plug 'neovim/nvim-lspconfig'
+
 :Plug 'hrsh7th/nvim-cmp'
 :Plug 'hrsh7th/cmp-buffer'
+:Plug 'hrsh7th/cmp-path'
+:Plug 'hrsh7th/cmp-nvim-lsp'
+:Plug 'hrsh7th/cmp-vsnip'
+:Plug 'hrsh7th/vim-vsnip'
+:Plug 'nvim-lualine/lualine.nvim'
 :Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 :Plug 'nvim-treesitter/playground'
 :Plug 'nvim-lua/popup.nvim'
@@ -114,11 +119,13 @@ augroup PHP1IC
     autocmd BufWritePre * %s/\s\+$//e
 augroup END
 
-lua require'lspconfig'.pyright.setup{ on_attach=require'completion'.on_attach }
-lua require'lspconfig'.bashls.setup{ on_attach=require'completion'.on_attach }
-lua require'lspconfig'.cmake.setup{ on_attach=require'completion'.on_attach }
-lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach , cmd = {"/usr/bin/clangd"}}
-lua require'cmp'.setup {enabled = true, config = "require('plugin.completion')"}
+lua require'cmp'.setup{}
+lua require'lspconfig'.clangd.setup{require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())}
+" lua require'lspconfig'.pyright.setup{ on_attach=require'completion'.on_attach }
+" lua require'lspconfig'.bashls.setup{ on_attach=require'completion'.on_attach }
+" lua require'lspconfig'.cmake.setup{ on_attach=require'completion'.on_attach }
+" lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach , cmd = {"/usr/bin/clangd"}}
+" lua require'cmp'.setup {enabled = true, config = "require('plugin.completion')"}
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 lua require'todo-comments'.setup{}
 lua require'lsp_signature'.setup{}
@@ -126,6 +133,6 @@ lua require'gitsigns'.setup{}
 lua require'which-key'.setup{}
 lua require'nvim-startup'.setup{}
 lua require'nvim-web-devicons'.setup{}
-lua require'lualine'.setup{options = {theme = 'oceanicnext'}}
+lua require'lualine'.setup{options = {theme = 'OceanicNext'}}
 " Tabout doesn't seem to work, probably an issue with this config
 lua require'tabout'.setup{tabkey = '<Tab>', backwards_tabkey = '<S-Tab>'}
