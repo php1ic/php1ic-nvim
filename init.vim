@@ -48,6 +48,7 @@ call plug#begin('~/.config/nvim/plugged')
 :Plug 'henriquehbr/nvim-startup.lua'
 :Plug 'abecodes/tabout.nvim'
 :Plug 'kyazdani42/nvim-web-devicons'
+:Plug 'numToStr/Comment.nvim'
 
 " Colour schemes
 " :Plug 'sainnhe/gruvbox-material'
@@ -111,7 +112,7 @@ nnoremap <leader>gca :lua vim.lsp.buf.code_action()<cr>
 nnoremap <leader>gsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<cr>
 nnoremap <leader>gn :lua vim.lsp.diagnostic.goto_next()<cr>
 " Git/Fugitive shortcuts
-nmap <leader>gs :Gstatus<cr>
+" nmap <leader>gs :Gstatus<cr>
 
 augroup PHP1IC
     autocmd!
@@ -119,16 +120,77 @@ augroup PHP1IC
     autocmd BufWritePre * %s/\s\+$//e
 augroup END
 
-lua require'cmp'.setup{}
-lua require'lspconfig'.clangd.setup{require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())}
-" lua require'lspconfig'.pyright.setup{ on_attach=require'completion'.on_attach }
+" Lifted straight from the nvim-cmp github README
+lua <<EOF
+  -- Setup nvim-cmp.
+  local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+      end,
+    },
+    mapping = {
+      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+  -- Setup lspconfig.
+  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  require('lspconfig')['clangd'].setup {capabilities = capabilities}
+  require('lspconfig')['pyright'].setup {capabilities = capabilities}
+  require('lspconfig')['bashls'].setup {capabilities = capabilities}
+  require('lspconfig')['cmake'].setup {capabilities = capabilities}
+EOF
+
+" lua require'lspconfig'.clangd.setup{require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())}
+" lua require'lspconfig'.pyright.setup{}
 " lua require'lspconfig'.bashls.setup{ on_attach=require'completion'.on_attach }
 " lua require'lspconfig'.cmake.setup{ on_attach=require'completion'.on_attach }
 " lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach , cmd = {"/usr/bin/clangd"}}
 " lua require'cmp'.setup {enabled = true, config = "require('plugin.completion')"}
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 lua require'todo-comments'.setup{}
-lua require'lsp_signature'.setup{}
+lua require'lsp_signature'.setup()
 lua require'gitsigns'.setup{}
 lua require'which-key'.setup{}
 lua require'nvim-startup'.setup{}
@@ -136,3 +198,4 @@ lua require'nvim-web-devicons'.setup{}
 lua require'lualine'.setup{options = {theme = 'OceanicNext'}}
 " Tabout doesn't seem to work, probably an issue with this config
 lua require'tabout'.setup{tabkey = '<Tab>', backwards_tabkey = '<S-Tab>'}
+lua require'Comment'.setup{}
