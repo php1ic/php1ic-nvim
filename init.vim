@@ -45,7 +45,6 @@ call plug#begin('~/.config/nvim/plugged')
 :Plug 'folke/todo-comments.nvim'
 :Plug 'ray-x/lsp_signature.nvim'
 :Plug 'lewis6991/gitsigns.nvim'
-:Plug 'henriquehbr/nvim-startup.lua'
 :Plug 'abecodes/tabout.nvim'
 :Plug 'kyazdani42/nvim-web-devicons'
 :Plug 'numToStr/Comment.nvim'
@@ -181,7 +180,6 @@ lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 lua require'lsp_signature'.setup{}
 lua require'gitsigns'.setup{}
 lua require'which-key'.setup{}
-lua require'nvim-startup'.setup{}
 lua require'nvim-web-devicons'.setup{}
 lua require'lualine'.setup{options = {theme = 'OceanicNext'}}
 " Tabout doesn't seem to work, probably an issue with this config
