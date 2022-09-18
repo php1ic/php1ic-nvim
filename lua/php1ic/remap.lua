@@ -11,6 +11,13 @@ nnoremap("n", "nzzzv")
 nnoremap("N", "Nzzzv")
 nnoremap("J", "mzJ`z")
 
+-- Telescope shortcuts
+nnoremap("<leader>ff", ":Telescope find_files<cr>")
+nnoremap("<leader>gf", ":Telescope git_files<cr>")
+
+-- LSP shortcuts
+nnoremap("<leader>gd", ":lua vim.lsp.buf.definition()<cr>")
+
 
 local vnoremap = require("php1ic.keymap").vnoremap
 
@@ -32,6 +39,7 @@ inoremap("?", "?<c-g>u")
 
 local nmap = require("php1ic.keymap").nmap
 
+-- Nicer window navigation shortcuts
 nmap("<leader>h", ":wincmd h<cr>")
 nmap("<leader>j", ":wincmd j<cr>")
 nmap("<leader>k", ":wincmd k<cr>")

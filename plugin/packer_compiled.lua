@@ -74,6 +74,16 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["Comment.nvim"] = {
+    loaded = true,
+    path = "/home/ijc/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    url = "https://github.com/numToStr/Comment.nvim"
+  },
+  ["clangd_extensions.nvim"] = {
+    loaded = true,
+    path = "/home/ijc/.local/share/nvim/site/pack/packer/start/clangd_extensions.nvim",
+    url = "https://github.com/p00f/clangd_extensions.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/ijc/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -98,6 +108,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ijc/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
+  },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/home/ijc/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  ["lsp_signature.nvim"] = {
+    loaded = true,
+    path = "/home/ijc/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
+    url = "https://github.com/ray-x/lsp_signature.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -149,6 +169,11 @@ _G.packer_plugins = {
     path = "/home/ijc/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["rust-tools.nvim"] = {
+    loaded = true,
+    path = "/home/ijc/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
+    url = "https://github.com/simrat39/rust-tools.nvim"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/home/ijc/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
@@ -158,6 +183,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ijc/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["vim-cpp-enhanced-highlight"] = {
+    loaded = true,
+    path = "/home/ijc/.local/share/nvim/site/pack/packer/start/vim-cpp-enhanced-highlight",
+    url = "https://github.com/octol/vim-cpp-enhanced-highlight"
   },
   ["vim-vsnip"] = {
     loaded = true,
