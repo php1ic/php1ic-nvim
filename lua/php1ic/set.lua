@@ -22,6 +22,8 @@ vim.opt.colorcolumn = "120"
 vim.opt.updatetime = 300
 vim.opt.timeoutlen = 500
 
+vim.opt.completeopt = "menu,menuone,noselect"
+
 vim.opt.title = true
 
 vim.g.mapleader = " "
