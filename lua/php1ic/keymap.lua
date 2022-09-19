@@ -1,3 +1,4 @@
+-- Function that can be used to set remaps
 local M = {}
 
 function bind(op, outer_opts)
