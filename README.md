@@ -10,4 +10,9 @@ ln -s /path/to/repos/php1ic-nvim ~/.config/nvim
 ```
 
 Initial run of neovim will likely give a lot of errors as the plugins have yet to be installed.
-Either skip them and run `:PackerSync` or prior to the first run install the plugins via the [command line](https://github.com/wbthomason/packer.nvim#bootstrapping)
+Either skip them and run `:PackerSync` or, prior to the first run install the plugins via the [command line](https://github.com/wbthomason/packer.nvim#bootstrapping)
+
+[Treesitter](https://tree-sitter.github.io/tree-sitter/) is used so you will need to `:TSInstall` the languages you care about.
+
+Additional fonts may also be requied for the status bar and some file navigation.
+Install those you are missing form the [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) repo.
