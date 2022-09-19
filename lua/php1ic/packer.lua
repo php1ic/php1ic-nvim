@@ -72,4 +72,7 @@ return require('packer').startup(function()
 
   -- Git signs so we can see what been changed
   use 'lewis6991/gitsigns.nvim'
+
+  -- Sticky lines to show context in long scopes
+  use 'nvim-treesitter/nvim-treesitter-context'
 end)
