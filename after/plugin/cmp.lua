@@ -1,14 +1,14 @@
 vim.g.completion_matching_stratgey_list = {'exact', 'substring', 'fuzzy'}
 
+-- Set up nvim-cmp.
+local cmp = require('cmp')
+
 local ok, lspkind = pcall(require, "lspkind")
 if not ok then
     return
 end
 
 lspkind.init()
-
--- Set up nvim-cmp.
-local cmp = require('cmp')
 
 cmp.setup({
   snippet = {
@@ -26,17 +26,17 @@ cmp.setup({
     -- documentation = cmp.config.window.bordered(),
   },
 
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-  },
+  }),
 
   ["<tab>"] = cmp.config.disable,
 
-  sources = {
+  sources = cmp.config.sources({
     { name = "nvim_lua" },
     { name = 'nvim_lsp' },
     { name = "path" },
@@ -46,7 +46,7 @@ cmp.setup({
     -- { name = 'snippy' }, -- For snippy users.
   -- }, {
     { name = 'buffer', keyword_length = 5 },
-  },
+  }),
 
   formatting = {
       format = lspkind.cmp_format {
