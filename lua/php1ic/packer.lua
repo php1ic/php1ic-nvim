@@ -42,6 +42,9 @@ return require('packer').startup(function()
   use 'neovim/nvim-lsp'
   use 'neovim/nvim-lspconfig'
 
+  -- Fancy icons in completion dialog
+  use 'onsails/lspkind.nvim'
+
   -- Show function signatures
   use 'ray-x/lsp_signature.nvim'
 
@@ -57,8 +60,8 @@ return require('packer').startup(function()
   }
 
   -- Snipets with vsnip
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/vim-vsnip'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
 
   -- Easily comment out lines and regions
   use 'numToStr/Comment.nvim'
