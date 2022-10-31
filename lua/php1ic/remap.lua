@@ -18,6 +18,9 @@ nnoremap("<leader>gf", ":Telescope git_files<cr>")
 -- LSP shortcuts
 nnoremap("<leader>gd", ":lua vim.lsp.buf.definition()<cr>")
 
+-- Neogit
+nnoremap("<leader>gs", ":Neogit<cr>")
+
 
 local vnoremap = require("php1ic.keymap").vnoremap
 

@@ -78,4 +78,11 @@ return require('packer').startup(function()
 
   -- Sticky lines to show context in long scopes
   use 'nvim-treesitter/nvim-treesitter-context'
+
+  -- Git interface
+  use {
+      'TimUntersberger/neogit',
+      requires = 'nvim-lua/plenary.nvim'
+  }
+
 end)
