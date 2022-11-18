@@ -85,4 +85,7 @@ return require('packer').startup(function()
       requires = 'nvim-lua/plenary.nvim'
   }
 
+  -- Apply formatting
+  use 'sbdchd/neoformat'
+
 end)
