@@ -1,50 +1,48 @@
-local nnoremap = require("php1ic.keymap").nnoremap
-
 -- No arrow keys allowed ;)
-nnoremap("<Up>", "<Nop>")
-nnoremap("<Down>", "<Nop>")
-nnoremap("<Left>", "<Nop>")
-nnoremap("<Right>", "<Nop>")
+vim.keymap.set("n", "<Up>", "<Nop>")
+vim.keymap.set("n", "<Down>", "<Nop>")
+vim.keymap.set("n", "<Left>", "<Nop>")
+vim.keymap.set("n", "<Right>", "<Nop>")
 
 -- Keep search results centered
-nnoremap("n", "nzzzv")
-nnoremap("N", "Nzzzv")
-nnoremap("J", "mzJ`z")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "J", "mzJ`z")
 
 -- Telescope shortcuts
-nnoremap("<leader>ff", ":Telescope find_files<cr>")
-nnoremap("<leader>gf", ":Telescope git_files<cr>")
+vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>")
+vim.keymap.set("n", "<leader>gf", ":Telescope git_files<cr>")
 
 -- LSP shortcuts
-nnoremap("<leader>gd", ":lua vim.lsp.buf.definition()<cr>")
+vim.keymap.set("n", "<leader>gd", ":lua vim.lsp.buf.definition()<cr>")
 
 -- Neogit
-nnoremap("<leader>gs", ":Neogit<cr>")
+vim.keymap.set("n", "<leader>gs", ":Neogit<cr>")
 
+-- Quickfix list navigation
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-local vnoremap = require("php1ic.keymap").vnoremap
 
 -- No arrow keys allowed ;)
-vnoremap("<Up>", "<Nop>")
-vnoremap("<Down>", "<Nop>")
-vnoremap("<Left>", "<Nop>")
-vnoremap("<Right>", "<Nop>")
+vim.keymap.set("v", "<Up>", "<Nop>")
+vim.keymap.set("v", "<Down>", "<Nop>")
+vim.keymap.set("v", "<Left>", "<Nop>")
+vim.keymap.set("v", "<Right>", "<Nop>")
 
-
-local inoremap = require("php1ic.keymap").inoremap
 
 -- Additional undo breakpoints
-inoremap(",", ",<c-g>u")
-inoremap(".", ".<c-g>u")
-inoremap("!", "!<c-g>u")
-inoremap("?", "?<c-g>u")
+vim.keymap.set("i", ",", ",<c-g>u")
+vim.keymap.set("i", ".", ".<c-g>u")
+vim.keymap.set("i", "!", "!<c-g>u")
+vim.keymap.set("i", "?", "?<c-g>u")
 
-
-local nmap = require("php1ic.keymap").nmap
 
 -- Nicer window navigation shortcuts
-nmap("<leader>h", ":wincmd h<cr>")
-nmap("<leader>j", ":wincmd j<cr>")
-nmap("<leader>k", ":wincmd k<cr>")
-nmap("<leader>l", ":wincmd l<cr>")
+vim.keymap.set("n", "<leader>h", ":wincmd h<cr>", {noremap = false})
+vim.keymap.set("n", "<leader>j", ":wincmd j<cr>", {noremap = false})
+vim.keymap.set("n", "<leader>k", ":wincmd k<cr>", {noremap = false})
+vim.keymap.set("n", "<leader>l", ":wincmd l<cr>", {noremap = false})
 
