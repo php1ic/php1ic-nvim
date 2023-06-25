@@ -1,3 +1,7 @@
+vim.g.mapleader = " "
+
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
 -- No arrow keys allowed ;)
 vim.keymap.set("n", "<Up>", "<Nop>")
 vim.keymap.set("n", "<Down>", "<Nop>")
@@ -10,14 +14,14 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "J", "mzJ`z")
 
 -- Telescope shortcuts
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>")
-vim.keymap.set("n", "<leader>gf", ":Telescope git_files<cr>")
+--vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>")
+--vim.keymap.set("n", "<leader>gf", ":Telescope git_files<cr>")
 
 -- LSP shortcuts
 vim.keymap.set("n", "<leader>gd", ":lua vim.lsp.buf.definition()<cr>")
 
 -- Neogit
-vim.keymap.set("n", "<leader>gs", ":Neogit<cr>")
+-- vim.keymap.set("n", "<leader>gs", ":Neogit<cr>")
 
 -- Quickfix list navigation
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
