@@ -23,6 +23,13 @@ vim.keymap.set("n", "<leader>gd", ":lua vim.lsp.buf.definition()<cr>")
 -- Neogit
 -- vim.keymap.set("n", "<leader>gs", ":Neogit<cr>")
 
+-- Should probably move this to a differnt file
+-- Neoformat automatically when coding c++
+vim.api.nvim_create_autocmd({"BufWritePre", "InsertLeave"}, {
+  pattern = {"*.hpp", ".cpp"},
+  command = "Neoformat",
+})
+
 -- Quickfix list navigation
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
