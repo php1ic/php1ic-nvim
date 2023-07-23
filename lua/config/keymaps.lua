@@ -26,7 +26,7 @@ vim.keymap.set("n", "<leader>gd", ":lua vim.lsp.buf.definition()<cr>")
 -- Should probably move this to a differnt file
 -- Neoformat automatically when coding c++
 vim.api.nvim_create_autocmd({"BufWritePre", "InsertLeave"}, {
-  pattern = {"*.hpp", ".cpp"},
+  pattern = {"*.hpp", "*.cpp"},
   command = "Neoformat",
 })
 
