@@ -20,12 +20,16 @@ vim.keymap.set("n", "J", "mzJ`z")
 -- LSP shortcuts
 vim.keymap.set("n", "<leader>gd", ":lua vim.lsp.buf.definition()<cr>")
 
+-- C++
+vim.keymap.set("n", "<leader>gh", "<cmd>ClangdSwitchSourceHeader<cr>")
+vim.keymap.set("n", "<leader>th", "<cmd>ClangdToggleInlayHints<cr>")
+
 -- Neogit
 -- vim.keymap.set("n", "<leader>gs", ":Neogit<cr>")
 
 -- Should probably move this to a differnt file
 -- Neoformat automatically when coding c++
-vim.api.nvim_create_autocmd({"BufWritePre", "InsertLeave"}, {
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
   pattern = {"*.hpp", "*.cpp"},
   command = "Neoformat",
 })
