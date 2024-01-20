@@ -1,5 +1,5 @@
 return {
-    'roflolilolmao/oceanic-next.nvim',
+   'mhartington/oceanic-next',
     lazy = false,
     priority = 1000,
     config = function()
