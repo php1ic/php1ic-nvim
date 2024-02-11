@@ -16,13 +16,19 @@ return {
       {
         "<leader>ff",
         function() require("telescope.builtin").find_files() end,
-        desc = ""
+        desc = " Telescope [f]ind [f]iles"
       },
 
       {
         "<leader>gf",
         function() require("telescope.builtin").git_files() end,
-        desc = ""
+        desc = "Telescope [g]it [f]iles"
+      },
+
+      {
+        "<leader>pd",
+        function() require("telescope.builtin").diagnostics() end,
+        desc = "Telescope [p]roject [d]iagnostics"
       },
 
       {
@@ -31,7 +37,7 @@ return {
           search = vim.fn.input("Grep > ")
         })
         end,
-        desc = ""
+        desc = "Telescope [p]roject [s]earch"
       },
     },
     cmd = "Telescope",

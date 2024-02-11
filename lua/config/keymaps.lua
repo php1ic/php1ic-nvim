@@ -13,19 +13,17 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "J", "mzJ`z")
 
--- Telescope shortcuts
---vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>")
---vim.keymap.set("n", "<leader>gf", ":Telescope git_files<cr>")
-
 -- LSP shortcuts
+vim.keymap.set("n", "<leader>rf", ":lua vim.lsp.buf.rename()<cr>")
 vim.keymap.set("n", "<leader>gd", ":lua vim.lsp.buf.definition()<cr>")
+-- Take Action
+vim.keymap.set("n", "<leader>ta", ":lua vim.lsp.buf.code_action({apply=true})<cr>")
+vim.keymap.set("n", "<leader>[", ":lua vim.diagnostic.goto_prev()<cr>")
+vim.keymap.set("n", "<leader>]", ":lua vim.diagnostic.goto_next()<cr>")
 
 -- C++
 vim.keymap.set("n", "<leader>gh", "<cmd>ClangdSwitchSourceHeader<cr>")
 vim.keymap.set("n", "<leader>th", "<cmd>ClangdToggleInlayHints<cr>")
-
--- Neogit
--- vim.keymap.set("n", "<leader>gs", ":Neogit<cr>")
 
 -- Should probably move this to a differnt file
 -- Neoformat automatically when coding c++
@@ -37,8 +35,8 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
 -- Quickfix list navigation
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 
 -- No arrow keys allowed ;)
