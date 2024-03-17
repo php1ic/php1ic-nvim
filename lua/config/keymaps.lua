@@ -13,6 +13,10 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "J", "mzJ`z")
 
+-- Move visual block and indent as required
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")
+
 -- LSP shortcuts
 vim.keymap.set("n", "<leader>rf", ":lua vim.lsp.buf.rename()<cr>")
 vim.keymap.set("n", "<leader>gd", ":lua vim.lsp.buf.definition()<cr>")
