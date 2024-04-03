@@ -14,6 +14,7 @@ return {
         "cpp",
         "cmake",
         "gitignore",
+        "go",
         "lua",
         "python",
         "rust",
@@ -35,7 +36,10 @@ return {
   {
     'nvim-treesitter/nvim-treesitter-context',
     event = "BufReadPre",
-    config = true
+    config = true,
+    opts = {
+      max_lines = 1
+    }
   },
 
 }

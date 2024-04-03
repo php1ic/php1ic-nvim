@@ -34,10 +34,11 @@ return {
       lsp.ensure_installed({
         'clangd',
         'rust_analyzer',
-        'pyright',
+        'pylsp',
         'cmake',
         'bashls',
         'lua_ls',
+        'gopls'
       })
 
       lsp.on_attach(function(_, bufnr)
