@@ -33,3 +33,5 @@ opt.completeopt = "menu,menuone,noselect"
 
 opt.title = true
 
+opt.spelllang = "en_gb"
+opt.spell = true
