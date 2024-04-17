@@ -29,11 +29,21 @@ vim.keymap.set("n", "<leader>]", ":lua vim.diagnostic.goto_next()<cr>")
 vim.keymap.set("n", "<leader>gh", "<cmd>ClangdSwitchSourceHeader<cr>")
 vim.keymap.set("n", "<leader>th", "<cmd>ClangdToggleInlayHints<cr>")
 
--- Should probably move this to a differnt file
+-- Should probably move this to a different file
 -- Neoformat automatically when coding c++
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-  pattern = {"*.hpp", "*.cpp"},
-  command = "Neoformat",
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+	pattern = { "*.hpp", "*.cpp" },
+	command = "Neoformat",
+})
+
+-- Highlight when yanking (copying) text
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("php1ic-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
 
 -- Quickfix list navigation
@@ -42,13 +52,11 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-
 -- No arrow keys allowed ;)
 vim.keymap.set("v", "<Up>", "<Nop>")
 vim.keymap.set("v", "<Down>", "<Nop>")
 vim.keymap.set("v", "<Left>", "<Nop>")
 vim.keymap.set("v", "<Right>", "<Nop>")
-
 
 -- Additional undo breakpoints
 vim.keymap.set("i", ",", ",<c-g>u")
@@ -56,10 +64,8 @@ vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", "!", "!<c-g>u")
 vim.keymap.set("i", "?", "?<c-g>u")
 
-
 -- Nicer window navigation shortcuts
-vim.keymap.set("n", "<leader>h", ":wincmd h<cr>", {noremap = false})
-vim.keymap.set("n", "<leader>j", ":wincmd j<cr>", {noremap = false})
-vim.keymap.set("n", "<leader>k", ":wincmd k<cr>", {noremap = false})
-vim.keymap.set("n", "<leader>l", ":wincmd l<cr>", {noremap = false})
-
+vim.keymap.set("n", "<leader>h", ":wincmd h<cr>", { noremap = false })
+vim.keymap.set("n", "<leader>j", ":wincmd j<cr>", { noremap = false })
+vim.keymap.set("n", "<leader>k", ":wincmd k<cr>", { noremap = false })
+vim.keymap.set("n", "<leader>l", ":wincmd l<cr>", { noremap = false })
