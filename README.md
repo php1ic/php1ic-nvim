@@ -10,7 +10,7 @@ ln -s /path/to/repos/php1ic-nvim ~/.config/nvim
 ```
 
 Initial run will automatically download and install all packages so may take a minute or two.
-[Treesitter](https://tree-sitter.github.io/tree-sitter/) is used so you will need to `:TSInstall` the languages you care about, but is hopefullu should 'just work'.
+[Treesitter](https://tree-sitter.github.io/tree-sitter/) is used so you will need to `:TSInstall` the languages you care about, but is hopefully should 'just work'.
 
-Additional fonts may also be requied for the status bar and some file navigation.
+Additional fonts may also be required for the status bar and some file navigation.
 Install those you are missing form the [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) repo.
