@@ -31,10 +31,10 @@ vim.keymap.set("n", "<leader>th", "<cmd>ClangdToggleInlayHints<cr>")
 
 -- Should probably move this to a different file
 -- Neoformat automatically when coding c++
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	pattern = { "*.hpp", "*.cpp" },
-	command = "Neoformat",
-})
+-- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+-- 	pattern = { "*.hpp", "*.cpp" },
+-- 	command = "Neoformat",
+-- })
 
 -- Highlight when yanking (copying) text
 --  See `:help vim.highlight.on_yank()`
