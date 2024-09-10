@@ -59,9 +59,9 @@ return {
 			{
 				"<leader>sk",
 				function()
-					require("telescope.builtin").help_tags()
+					require("telescope.builtin").keymaps()
 				end,
-				desc = "Telescope [S]earch with [G]rep",
+				desc = "Telescope [S]earch [K]eymaps",
 			},
 		},
 		cmd = "Telescope",
