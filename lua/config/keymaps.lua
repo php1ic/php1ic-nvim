@@ -65,7 +65,7 @@ vim.keymap.set("i", "!", "!<c-g>u")
 vim.keymap.set("i", "?", "?<c-g>u")
 
 -- Nicer window navigation shortcuts
-vim.keymap.set("n", "<leader>h", ":wincmd h<cr>", { noremap = false })
-vim.keymap.set("n", "<leader>j", ":wincmd j<cr>", { noremap = false })
-vim.keymap.set("n", "<leader>k", ":wincmd k<cr>", { noremap = false })
-vim.keymap.set("n", "<leader>l", ":wincmd l<cr>", { noremap = false })
+-- vim.keymap.set("n", "<leader>h", ":wincmd h<cr>", { noremap = false })
+-- vim.keymap.set("n", "<leader>j", ":wincmd j<cr>", { noremap = false })
+-- vim.keymap.set("n", "<leader>k", ":wincmd k<cr>", { noremap = false })
+-- vim.keymap.set("n", "<leader>l", ":wincmd l<cr>", { noremap = false })
